@@ -511,14 +511,19 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
         maxLength: 100;
       }>;
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
-    image: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
     description: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 50;
         maxLength: 500;
+      }>;
+    name_image: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 250;
       }>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -564,8 +569,13 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
         minLength: 50;
         maxLength: 300;
       }>;
-    image: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
+    name_image: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 250;
+      }>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -613,8 +623,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     rent_30_days: Schema.Attribute.String;
     brand: Schema.Attribute.Relation<'manyToOne', 'api::brand.brand'>;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
-    images: Schema.Attribute.Media<'images' | 'files', true> &
-      Schema.Attribute.Required;
     price: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
@@ -631,6 +639,13 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       }>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     short_description: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 250;
+      }>;
+    name_image: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
       Schema.Attribute.SetMinMaxLength<{

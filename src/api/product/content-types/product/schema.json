@@ -50,15 +50,6 @@
       "target": "api::category.category",
       "inversedBy": "products"
     },
-    "images": {
-      "type": "media",
-      "multiple": true,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
     "price": {
       "type": "string",
       "required": true,
@@ -81,6 +72,13 @@
       "required": true
     },
     "short_description": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 5,
+      "maxLength": 250
+    },
+    "name_image": {
       "type": "string",
       "required": true,
       "unique": true,

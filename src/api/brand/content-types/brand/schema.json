@@ -32,21 +32,19 @@
       "target": "api::product.product",
       "mappedBy": "brand"
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
     "description": {
       "type": "string",
       "required": true,
       "unique": true,
       "minLength": 50,
       "maxLength": 500
+    },
+    "name_image": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 5,
+      "maxLength": 250
     }
   }
 }
