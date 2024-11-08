@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 5,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "unique": true,
+      "minLength": 5,
+      "maxLength": 500
+    },
+    "rent_1_day": {
+      "type": "string"
+    },
+    "rent_7_days": {
+      "type": "string"
+    },
+    "rent_15_days": {
+      "type": "string"
+    },
+    "rent_30_days": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "price": {
+      "type": "string",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 20
+    },
+    "technical_sheet": {
+      "type": "blocks"
+    },
+    "model": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 3,
+      "maxLength": 50
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "short_description": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 5,
+      "maxLength": 250
+    }
+  }
+}
